@@ -35,6 +35,9 @@ before_script:
   - pwd
   - ls -al
   - mysql -e 'create database drupal'
+  - drush --version
+  - drush list
+  - drush list
   - drush --yes core-quick-drupal mmenavas --no-server --db-url=mysql://root:@127.0.0.1/drupal --profile=minimal
   - ls -al
 #  - pwd
