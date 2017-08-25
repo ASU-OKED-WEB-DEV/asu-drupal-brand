@@ -36,7 +36,11 @@ before_script:
   - echo $PATH
   - ls -al vendor
   - ls -al vendor/bin
+  - ln -s vendor/bin bin
   - ls -al bin
+  - ./bin/drupal help
+  - ./bin/drush help
+
 #  - drupal help
 #  - drush help
 #  - php -d sendmail_path=`which true` ~/.composer/vendor/bin/drush.php --yes core-quick-drupal testsite --no-server --db-url=mysql://root:@127.0.0.1/mmenavas_asu_brand_test mmenavas_asu_brand_test  --profile=minimal
