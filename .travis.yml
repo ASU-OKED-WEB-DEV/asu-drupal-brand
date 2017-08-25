@@ -29,12 +29,10 @@ install:
   - phpenv rehash
 
 before_script:
-  - ls -al $HOME
-  - ls -al $HOME/.composer
-  - ls -al $HOME/.composer/vendor
-  - ls -al $HOME/.composer/vendor/bin
-  - drush help
-#  - mysql -e 'create database mmenavas_asu_brand_test'
+  - cd ..
+  - mysql -e 'create database drupal'
+  - drush --yes core-quick-drupal drupal --no-server --db-url=mysql://root:@127.0.0.1/drupal --profile=minimal
+  - mv asu_brand drupal/modules/asu_brand
 #  - pwd
 #  - echo $PATH
 #  - ls -al vendor
@@ -51,4 +49,4 @@ before_script:
 #  - drush --yes pm-enable mmenavas_asu_brand
 
 #script: drush test-run 'Travis-CI Drupal Module Example' --uri=http://127.0.0.1:8080
-script: echo "Hello world"
+script: drush en asu_brand -y
