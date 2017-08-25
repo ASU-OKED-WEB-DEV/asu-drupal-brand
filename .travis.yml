@@ -19,8 +19,8 @@ install:
   - echo 'sendmail_path = /bin/true' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
   - composer self-update
   - composer install --no-dev
-  - composer global require drush/drush:8.*
   - export PATH="$HOME/.composer/vendor/bin:$PATH"
+  - composer global require drush/drush:8.*
 
 before_script:
   # check current directory
