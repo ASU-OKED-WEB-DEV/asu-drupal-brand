@@ -19,9 +19,8 @@ before_install:
 install:
   - export PATH="$HOME/.composer/vendor/bin:$TRAVIS_BUILD_DIR/bin:$PATH"
   - export COMPOSER_EXIT_ON_PATCH_FAILURE=1
-  - composer global require drush/drush:dev-master
 
-  - yes '' | pecl install yaml
+  - composer global require drush/drush:drush-8.1.13
 
   - echo 'max_execution_time = 120' >> drupal.php.ini;
   - echo 'sendmail_path = /bin/true' >> drupal.php.ini;
@@ -36,24 +35,8 @@ before_script:
   - ls -al
   - mysql -e 'create database drupal'
   - drush --version
-  - drush list
-  - drush list
   - drush --yes core-quick-drupal mmenavas --no-server --db-url=mysql://root:@127.0.0.1/drupal --profile=minimal
   - ls -al
-#  - pwd
-#  - echo $PATH
-#  - ls -al vendor
-#  - ls -al vendor/bin
-#  - ln -s vendor/bin bin
-#  - ls -al bin
-#  - ./bin/drupal help
-#  - ./bin/drush help
-#  - drupal help
-#  - drush help
-#  - php -d sendmail_path=`which true` ~/.composer/vendor/bin/drush.php --yes core-quick-drupal testsite --no-server --db-url=mysql://root:@127.0.0.1/mmenavas_asu_brand_test mmenavas_asu_brand_test  --profile=minimal
-#  - ln -s $(readlink -e $(cd -)) mmenavas_asu_brand_test/drupal/modules/mmenavas_asu_brand
-#  - cd travis_ci_drupal_module_example_test/drupal
-#  - drush --yes pm-enable mmenavas_asu_brand
 
 #script: drush test-run 'Travis-CI Drupal Module Example' --uri=http://127.0.0.1:8080
 script: drush en asu_brand -y
