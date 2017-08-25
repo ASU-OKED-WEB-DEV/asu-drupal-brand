@@ -35,8 +35,8 @@ before_script:
   # check current directory
   - pwd
   # Run drush
-  - drush help
   - drupal help
+  - drush help
 #  - php -d sendmail_path=`which true` ~/.composer/vendor/bin/drush.php --yes core-quick-drupal testsite --no-server --db-url=mysql://root:@127.0.0.1/mmenavas_asu_brand_test mmenavas_asu_brand_test  --profile=minimal
 #  - ln -s $(readlink -e $(cd -)) mmenavas_asu_brand_test/drupal/modules/mmenavas_asu_brand
 #  - cd travis_ci_drupal_module_example_test/drupal
