@@ -19,8 +19,7 @@ before_install:
 install:
   - export PATH="$HOME/.composer/vendor/bin:$TRAVIS_BUILD_DIR/bin:$PATH"
   - export COMPOSER_EXIT_ON_PATCH_FAILURE=1
-
-  - mysql -e 'create database mmenavas_asu_brand_test'
+  - composer global require drush/drush:dev-master
 
   - yes '' | pecl install yaml
 
@@ -29,18 +28,21 @@ install:
   - phpenv config-add drupal.php.ini
   - phpenv rehash
 
-  - composer install
-
 before_script:
-  - pwd
-  - echo $PATH
-  - ls -al vendor
-  - ls -al vendor/bin
-  - ln -s vendor/bin bin
-  - ls -al bin
-  - ./bin/drupal help
-  - ./bin/drush help
-
+  - ls -al $HOME
+  - ls -al $HOME/.composer
+  - ls -al $HOME/.composer/vendor
+  - ls -al $HOME/.composer/vendor/bin
+  - drush help
+#  - mysql -e 'create database mmenavas_asu_brand_test'
+#  - pwd
+#  - echo $PATH
+#  - ls -al vendor
+#  - ls -al vendor/bin
+#  - ln -s vendor/bin bin
+#  - ls -al bin
+#  - ./bin/drupal help
+#  - ./bin/drush help
 #  - drupal help
 #  - drush help
 #  - php -d sendmail_path=`which true` ~/.composer/vendor/bin/drush.php --yes core-quick-drupal testsite --no-server --db-url=mysql://root:@127.0.0.1/mmenavas_asu_brand_test mmenavas_asu_brand_test  --profile=minimal
