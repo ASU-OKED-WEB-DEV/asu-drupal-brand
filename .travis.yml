@@ -32,7 +32,7 @@ before_script:
   - drush --yes core-quick-drupal tmp --no-server --db-url=mysql://root:@127.0.0.1/drupal --profile=standard
   - mv tmp/drupal .
   - ls -al drupal
-  - mv asu_drupal drupal/modules
+  - mv asu_brand drupal/modules/
   - cd drupal
   - drush status
 
