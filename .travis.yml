@@ -34,8 +34,9 @@ install:
 before_script:
   - pwd
   - echo $PATH
-  - ls -al $HOME
-  - ls -al $HOME/.composer/vendor/bin
+  - ls -al vendor
+  - ls -al vendor/bin
+  - ls -al bin
 #  - drupal help
 #  - drush help
 #  - php -d sendmail_path=`which true` ~/.composer/vendor/bin/drush.php --yes core-quick-drupal testsite --no-server --db-url=mysql://root:@127.0.0.1/mmenavas_asu_brand_test mmenavas_asu_brand_test  --profile=minimal
