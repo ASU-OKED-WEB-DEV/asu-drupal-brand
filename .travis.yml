@@ -14,7 +14,6 @@ mysql:
 before_install:
   - phpenv config-rm xdebug.ini
   - composer self-update
-  - composer --version
 
 install:
   - export PATH="$HOME/.composer/vendor/bin:$TRAVIS_BUILD_DIR/bin:$PATH"
@@ -28,10 +27,13 @@ install:
   - phpenv rehash
 
 before_script:
+  - cd ..
   - mysql -e 'create database drupal'
-  - drush --yes core-quick-drupal test-site --no-server --db-url=mysql://root:@127.0.0.1/drupal --profile=standard
-  - ls -al test-site
-  - mv asu_drupal test-site/modules
+  - drush --yes core-quick-drupal tmp --no-server --db-url=mysql://root:@127.0.0.1/drupal --profile=standard
+  - mv tmp/drupal .
+  - ls -al drupal
+  - mv asu_drupal drupal/modules
+  - cd drupal
+  - drush status
 
-#script: drush test-run 'Travis-CI Drupal Module Example' --uri=http://127.0.0.1:8080
 script: drush en asu_brand -y
