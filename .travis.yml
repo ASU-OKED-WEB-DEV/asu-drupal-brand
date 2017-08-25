@@ -28,15 +28,10 @@ install:
   - phpenv rehash
 
 before_script:
-  - pwd
-  - ls -al
-  - cd ..
-  - pwd
-  - ls -al
   - mysql -e 'create database drupal'
-  - drush --version
-  - drush --yes core-quick-drupal mmenavas --no-server --db-url=mysql://root:@127.0.0.1/drupal --profile=minimal
-  - ls -al
+  - drush --yes core-quick-drupal test-site --no-server --db-url=mysql://root:@127.0.0.1/drupal --profile=standard
+  - ls -al test-site
+  - mv asu_drupal test-site/modules
 
 #script: drush test-run 'Travis-CI Drupal Module Example' --uri=http://127.0.0.1:8080
 script: drush en asu_brand -y
