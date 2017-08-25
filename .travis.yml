@@ -36,4 +36,6 @@ before_script:
   - cd drupal
   - drush status
 
-script: drush en asu_brand -y
+script:
+ - drush en asu_brand -y
+ - drush cr
