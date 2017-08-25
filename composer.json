@@ -10,5 +10,8 @@
     "issues": "https://www.drupal.org/project/issues/asu_brand",
     "source": "http://cgit.drupalcode.org/asu_brand"
   },
+  "require-dev": {
+    "drush/drush": "8.1.12",
+  },
   "require": { }
 }

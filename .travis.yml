@@ -12,23 +12,28 @@ mysql:
   encoding: utf8
 
 before_install:
-  - sudo apt-get update > /dev/null
+  - phpenv config-rm xdebug.ini
+  - composer self-update
+  - composer --version
 
 install:
-  - phpenv config-rm xdebug.ini
-  - echo 'sendmail_path = /bin/true' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
-  - composer self-update
-  - composer install --no-dev
-  - export PATH="$HOME/.composer/vendor/bin:$PATH"
-  - composer global require drush/drush:8.*
+  - export PATH="$HOME/.composer/vendor/bin:$TRAVIS_BUILD_DIR/bin:$PATH"
+  - export COMPOSER_EXIT_ON_PATCH_FAILURE=1
+
+  - mysql -e 'create database mmenavas_asu_brand_test'
+
+  - yes '' | pecl install yaml
+
+  - echo 'max_execution_time = 120' >> drupal.php.ini;
+  - echo 'sendmail_path = /bin/true' >> drupal.php.ini;
+  - phpenv config-add drupal.php.ini
+  - phpenv rehash
+
+  - composer install
 
 before_script:
   # check current directory
   - pwd
-  # navigate out of module directory to prevent blown stack by recursive module lookup
-  - cd ../..
-  # Create DB
-  - mysql -e 'create database mmenavas_asu_brand_test'
   # Run drush
   - drush status
 #  - php -d sendmail_path=`which true` ~/.composer/vendor/bin/drush.php --yes core-quick-drupal testsite --no-server --db-url=mysql://root:@127.0.0.1/mmenavas_asu_brand_test mmenavas_asu_brand_test  --profile=minimal
