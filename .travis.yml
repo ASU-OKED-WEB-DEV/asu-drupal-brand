@@ -27,19 +27,14 @@ before_script:
   - pwd
   # navigate out of module directory to prevent blown stack by recursive module lookup
   - cd ../..
-
-  # create new site, stubbing sendmail path with true to prevent delivery errors and manually resolving drush path
+  # Create DB
   - mysql -e 'create database mmenavas_asu_brand_test'
-  - mkdir drupal
-  - mkdir sites
-  - mkdir modules
+  # Run drush
+  - drush status
 #  - php -d sendmail_path=`which true` ~/.composer/vendor/bin/drush.php --yes core-quick-drupal testsite --no-server --db-url=mysql://root:@127.0.0.1/mmenavas_asu_brand_test mmenavas_asu_brand_test  --profile=minimal
-
-  # reference and enable travis_ci_drupal_module_example in build site
-  - ln -s $(readlink -e $(cd -)) mmenavas_asu_brand_test/drupal/modules/mmenavas_asu_brand
-  - cd travis_ci_drupal_module_example_test/drupal
+#  - ln -s $(readlink -e $(cd -)) mmenavas_asu_brand_test/drupal/modules/mmenavas_asu_brand
+#  - cd travis_ci_drupal_module_example_test/drupal
 #  - drush --yes pm-enable mmenavas_asu_brand
-#  - drush status
 
 #script: drush test-run 'Travis-CI Drupal Module Example' --uri=http://127.0.0.1:8080
 script: echo "Hello world"
