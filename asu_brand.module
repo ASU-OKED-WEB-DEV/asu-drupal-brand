@@ -10,7 +10,7 @@ use Drupal\Core\Routing\RouteMatchInterface;
 /**
  * Header default version
  */
-const ASU_BRAND_HEADER_VERSION_DEFAULT = '4.7';
+const ASU_BRAND_HEADER_VERSION_DEFAULT = '4.6';
 
 /**
  * URL Basepath
