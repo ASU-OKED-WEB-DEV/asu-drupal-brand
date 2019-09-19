@@ -1,5 +1,11 @@
 CHANGELOG for ASU Brand module for Drupal 7 and 8
 
+8.x, 2019-09-19
+-------------------------
+- Update to ASU brand header version 4.8.
+- New 2020 ASU innovation badge.
+- Rendering of new footer verbiage.
+
 8.x-1.0-beta4, 2017-10-02
 -------------------------
 - Refactor monolithic build() method in ASUBrandHeader.php

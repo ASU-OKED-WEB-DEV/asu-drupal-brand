@@ -4,9 +4,9 @@ header:
   css:
     theme:
       '//www.asu.edu/asuthemes/4.6/css/asu_header.min.css': { type: external }
-      '//www.asu.edu/asuthemes/4.6/css/asu_header_media.min.css': { type: external }
+      '//www.asu.edu/asuthemes/4.8/css/asu_header_media.min.css': { type: external }
   js:
-    '//www.asu.edu/asuthemes/4.6/js/asu_header.min.js': { type: external }
+    '//www.asu.edu/asuthemes/4.8/js/asu_header.min.js': { type: external }
   dependencies:
         - core/jquery
         - core/jquery.once
